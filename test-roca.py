@@ -28,14 +28,15 @@ prints = [6, 30, 126, 1026, 5658, 107286, 199410, 8388606, 536870910, 2147483646
             11692013098647223345629478661730264157247460343806,
             187072209578355573530071658587684226515959365500926]
 
+pairs = zip(primes, prints)
 
 def check(n):
     """
     Input: modulus n
     output: True if vulnerable to ROCA, else False 
     """
-    for i in range(0, len(primes)):
-        if (1 << f_mod(n ,primes[i])) & prints[i] == 0:
+    for x,y in pairs:
+        if (1 << f_mod(n ,x)) & y == 0:
             return False
     return True
 
